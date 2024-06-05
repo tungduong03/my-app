@@ -7,6 +7,7 @@ import {
     Text,
     Button,
     View,
+    Image,
     TouchableOpacity,
     ScrollView,
 } from "react-native";
@@ -29,7 +30,7 @@ export default function Home({ navigation }) {
                             <Task
                                 navigation={navigation}
                                 data={item}
-                                key={item.code}
+                                key={item.key}
                                 message={dataByTopic ? dataByTopic[item.topic] : undefined}
                             />
                         );

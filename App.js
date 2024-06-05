@@ -1,4 +1,5 @@
 import React, { useState, useEffect, createContext } from "react";
+import images from "./assets/images";
 import { StatusBar } from "expo-status-bar";
 import {
     StyleSheet,
@@ -21,16 +22,16 @@ export const gates = [
     {
         code: "gate_1",
         name: "Cổng Parabol Giải Phóng",
-        icon: require(`./assets/gate_1.jpeg`),
+        icon: {uri : 'https://scontent.fhan14-1.fna.fbcdn.net/v/t1.6435-9/93867899_1646923142112369_7514781935667773440_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFwQJKpyJi88dexGOxzsKj8mHdNmc8rd8qYd02Zzyt3ygBZG97QHLG7Q9HXrgkzV6m6bA-XF1ezxnr2P3UBReAP&_nc_ohc=yPNx4F8c-h0Q7kNvgEydc-2&_nc_ht=scontent.fhan14-1.fna&oh=00_AYAFlrooGw9Tka6dmeXKxxdf3_kZDTU9SvmuUL7EmpBm-w&oe=66877192'},
         topic: 'message'
     },
     /*{
         code: "gate_2",
         name: "Cổng Đại Cồ Việt",
-        icon: require(`./assets/gate_2.jpeg`),
+        icon: images.icon,
         topic: 'gate_2'
     },
-    {
+    /*{
         code: "gate_3",
         name: "Cổng Trần Đại Nghĩa",
         icon: require(`./assets/gate_3.jpeg`),
