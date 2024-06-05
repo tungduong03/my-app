@@ -21,15 +21,17 @@ export const DataContext = createContext(null);
 export const gates = [
     {
         code: "gate_1",
-        name: "Cổng Parabol Giải Phóng",
+        name: "HUST",
         icon: {uri : 'https://scontent.fhan14-1.fna.fbcdn.net/v/t1.6435-9/93867899_1646923142112369_7514781935667773440_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFwQJKpyJi88dexGOxzsKj8mHdNmc8rd8qYd02Zzyt3ygBZG97QHLG7Q9HXrgkzV6m6bA-XF1ezxnr2P3UBReAP&_nc_ohc=yPNx4F8c-h0Q7kNvgEydc-2&_nc_ht=scontent.fhan14-1.fna&oh=00_AYAFlrooGw9Tka6dmeXKxxdf3_kZDTU9SvmuUL7EmpBm-w&oe=66877192'},
-        topic: 'message'
+        topic: 'message',
+        number: 0
     },
-    /*{
+    {
         code: "gate_2",
-        name: "Cổng Đại Cồ Việt",
-        icon: images.icon,
-        topic: 'gate_2'
+        name: "Home",
+        icon: {uri : 'https://bcp.cdnchinhphu.vn/thumb_w/640/334894974524682240/2022/12/5/dhbkhn-6920-1658994052-1-16702134834751920701721.jpg'},
+        topic: 'message',
+        number: 1
     },
     /*{
         code: "gate_3",
@@ -51,7 +53,7 @@ export default function App() {
     useEffect(() => {
         console.log("Fetching data from API...");
         try {
-            fetch("https://api.thingspeak.com/channels/2552930/feeds.json?results=2")
+            fetch("https://api.thingspeak.com/channels/2552930/feeds.json?results=1")
                 .then(response => response.json())
                 .then(data => {
                     console.log("Received data from API:", data);
@@ -90,7 +92,7 @@ export default function App() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: "#fff",
         alignItems: 'center',
         justifyContent: 'center',
     },

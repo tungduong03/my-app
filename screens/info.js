@@ -17,40 +17,41 @@ import { DataContext } from "../App";
 const labels = [
     {
         code: "field1",
-        name: "Temp",
+        name: "Temperature",
         //icon: require("./../assets/field1.jpeg"),
-        unit: "độ C"
+        unit: "°C"
     },
     {
         code: "field2",
-        name: "MQ135",
+        name: "CO",
         //icon: require("./../assets/field2.jpeg"),
-        unit: "unit2"
+        unit: "PPM"
     },
     {
         code: "field3",
-        name: "TD0772",
+        name: "PM2.5",
         //icon: require("./../assets/field3.jpeg"),
-        unit: "unit3"
+        unit: "µg/l"
     },
     {
         code: "field4",
-        name: "Humi",
+        name: "Humidity",
         //icon: require("./../assets/field4.jpeg"),
-        unit: "unit4"
+        unit: "%"
     },
 ];
 
 export default function Info({ route, navigation }) {
     const { data, message } = route.params;
     const {dataByTopic} = useContext(DataContext);
-
     const [value, setValue] = useState({
-        field1: parseFloat(dataByTopic[data.topic].field1),
-        field2: dataByTopic[data.topic].field2,
-        field3: dataByTopic[data.topic].field3,
-        field4: dataByTopic[data.topic].field4,
-    });
+            field1: parseFloat(dataByTopic[data.topic].field1),
+            field2: dataByTopic[data.topic].field2,
+            field3: dataByTopic[data.topic].field3,
+            field4: dataByTopic[data.topic].field4,
+        });
+    
+    
     
     return (
         <View style={styles.container}>
@@ -64,7 +65,7 @@ export default function Info({ route, navigation }) {
                         navigation.goBack();
                     }}
                 />
-                <Text style={styles.titleText}>Thông số chi tiết</Text>
+                <Text style={styles.titleText}>Detail information</Text>
             </View>
             <Text style={styles.nameText}>{data.name}</Text>
             <View style={styles.iconWrapper}>

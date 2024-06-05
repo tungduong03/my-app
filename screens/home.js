@@ -22,7 +22,7 @@ export default function Home({ navigation }) {
             <View style={styles.body}>
                 <Text style={styles.header}>
                     {" "}
-                    Hệ thống quan trắc giao thông tại các điểm{" "}
+                    The air quality monitoring system{" "}
                 </Text>
                 <View style={styles.items}>
                     {gates.map((item) => {
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     congParabol: {},
     body: {
         flex: 1,
-        paddingTop: 70,
+        paddingTop: 120,
         paddingHorizontal: 18,
     },
     header: {
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     items: {
-        marginTop: 25,
+        marginTop: 80,
         flexDirection: "row",
         flexWrap: "wrap",
         alignItems: "center",

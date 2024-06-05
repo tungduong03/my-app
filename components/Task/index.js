@@ -21,17 +21,17 @@ const styleByLevel = {
     [LEVEL_LOW]: {
         color: '#fff',
         backgroundColor: 'green',
-        text: 'Thấp'
+        text: 'Safe'
     },
     [LEVEL_MEDIUM]: {
         color: 'grey',
         backgroundColor: 'yellow',
-        text: 'Trung bình'
+        text: 'Be Careful'
     },
     [LEVEL_HIGH]: {
         color: '#fff',
         backgroundColor: 'red',
-        text: 'Cao'
+        text: 'Dangerous'
     }
 }
 
@@ -42,9 +42,9 @@ const Task = ({ data, navigation, message }) => {
         field3: null,
         field4: null,
     });
-    console.log("message1:",message);
+    
     useEffect(() => {
-        if (message) {
+        if (message && data.number != 1) {
             try {
                 console.log("message",message);
                 const field1 = message.field1;
@@ -72,15 +72,13 @@ const Task = ({ data, navigation, message }) => {
     } = value;
 
     let level = null;
-    if (field2 && field3) {
-        if (field2 < 10 && field3 < 20) {
-            level = LEVEL_LOW;
-        } else if ((10 < field2 && field2 < 120 && field3 < 20) || (20 < field3 && field3 < 100 && field2 < 10)) {
-            level = LEVEL_MEDIUM;
-        } else if ((10 < field2 && 20 < field3) || field3 > 100 || field2 > 120) {
-            level = LEVEL_HIGH;
-        }
-    }
+    if (field2 <= 1000 && field1 <= 35 && field3 < 12) 
+        level = LEVEL_LOW;
+    if ( (field2 > 1000 && field2 < 5000) || (field3 > 13 && field3 < 36) || (field1 > 35 && field1 <= 41) )  
+        level = LEVEL_MEDIUM;
+    if ( field2 >= 5000 || field3 > 36 || field1 > 41) 
+        level = LEVEL_HIGH;
+
     if (level) {
         level = styleByLevel[level]
     }
