@@ -24,7 +24,7 @@ export const gates = [
         icon: require(`./assets/gate_1.jpeg`),
         topic: 'message'
     },
-    {
+    /*{
         code: "gate_2",
         name: "Cổng Đại Cồ Việt",
         icon: require(`./assets/gate_2.jpeg`),
@@ -41,7 +41,7 @@ export const gates = [
         name: "Cổng dẫn vào khu Kí túc xá",
         icon: require(`./assets/gate_4.jpeg`),
         topic: 'gate_4'
-    },
+    },*/
 ];
 
 export default function App() {
