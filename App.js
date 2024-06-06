@@ -51,27 +51,42 @@ export default function App() {
     const [dataByTopic, setDataByTopic] = useState({});
 
     useEffect(() => {
-        console.log("Fetching data from API...");
-        try {
-            fetch("https://api.thingspeak.com/channels/2552930/feeds.json?results=1")
-                .then(response => response.json())
-                .then(data => {
-                    console.log("Received data from API:", data);
-                    // Process the received data and update state
-                    const { feeds } = data;
-                    if (feeds && feeds.length > 0) {
-                        const latestFeed = feeds[0];
-                        setDataByTopic({ message: latestFeed });
-                        console.log("LatestFeed:", latestFeed);
-                    }
-                })
-                .catch(error => {
-                    console.error("Error fetching data from API:", error);
-                });
-        } catch (e) {
-            console.error("Error in API request:", e);
-        }
-    }, []);
+      const fetchData = () => {
+          console.log("Fetching data from API...");
+          try {
+              fetch("https://api.thingspeak.com/channels/2552930/feeds.json?results=1")
+                  .then(response => response.json())
+                  .then(data => {
+                      console.log("Received data from API:", data);
+                      // Process the received data and update state
+                      const { feeds } = data;
+                      if (feeds && feeds.length > 0) {
+                          const latestFeed = feeds[0];
+                          setDataByTopic({ message: latestFeed });
+                          console.log("LatestFeed:", latestFeed);
+                      }
+                  })
+                  .catch(error => {
+                      console.error("Error fetching data from API:", error);
+                  });
+          } catch (e) {
+              console.error("Error in API request:", e);
+          }
+      };
+
+      // Fetch data initially
+      fetchData();
+
+      // Set up interval to fetch data every 30 seconds
+      const interval = setInterval(() => {
+          fetchData();
+      }, 15000);
+
+      // Clean up interval on component unmount
+      return () => {
+          clearInterval(interval);
+      };
+  }, []);
 
     return (
         <DataContext.Provider value={{ dataByTopic }}>

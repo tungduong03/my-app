@@ -1,6 +1,4 @@
-//import Paho from "paho-mqtt";
 import Ionicons from "@expo/vector-icons/Ionicons";
-
 import { useState, useEffect, useContext } from "react";
 import { StatusBar } from "expo-status-bar";
 import {
@@ -44,15 +42,21 @@ const labels = [
 export default function Info({ route, navigation }) {
     const { data, message } = route.params;
     const {dataByTopic} = useContext(DataContext);
-    const [value, setValue] = useState({
-            field1: parseFloat(dataByTopic[data.topic].field1),
-            field2: dataByTopic[data.topic].field2,
-            field3: dataByTopic[data.topic].field3,
-            field4: dataByTopic[data.topic].field4,
-        });
-    
-    
-    
+
+    const initialValue = data.number === 1 ? {
+        field1: null,
+        field2: null,
+        field3: null,
+        field4: null,
+    } : {
+        field1: parseFloat(dataByTopic[data.topic].field1),
+        field2: dataByTopic[data.topic].field2,
+        field3: dataByTopic[data.topic].field3,
+        field4: dataByTopic[data.topic].field4,
+    };
+
+    const [value, setValue] = useState(initialValue);
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -74,7 +78,7 @@ export default function Info({ route, navigation }) {
             <View>
                 {labels.map((item, index) => {
                     return (
-                        <View style={styles.item}>
+                        <View style={styles.item} key={index}>
                             <View style={styles.labelItem}>
                                 <View style={styles.labelIconWrapper}>
                                     <Image
