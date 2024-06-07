@@ -1,5 +1,6 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useState, useEffect, useContext } from "react";
+import num_fake from "../num_fake";
 import { StatusBar } from "expo-status-bar";
 import {
     StyleSheet,
@@ -44,10 +45,10 @@ export default function Info({ route, navigation }) {
     const {dataByTopic} = useContext(DataContext);
 
     const initialValue = data.number === 1 ? {
-        field1: null,
-        field2: null,
-        field3: null,
-        field4: null,
+        field1: num_fake.field1,
+        field2: num_fake.field2,
+        field3: num_fake.field3,
+        field4: num_fake.field4,
     } : {
         field1: parseFloat(dataByTopic[data.topic].field1),
         field2: dataByTopic[data.topic].field2,

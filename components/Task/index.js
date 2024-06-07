@@ -7,6 +7,7 @@ import {
     Image,
 } from "react-native";
 import React from "react";
+import num_fake from "../../num_fake";
 import { useState, useEffect } from "react";
 import { StyleSheet } from "react-native";
 
@@ -61,6 +62,14 @@ const Task = ({ data, navigation, message }) => {
             } catch (e) {
                 console.error("Error parsing message:", e);
             }
+        }
+        else {
+                setValue({
+                    field1: num_fake.field1,
+                    field2: num_fake.field2,
+                    field3: num_fake.field3,
+                    field4: num_fake.field4,
+                });
         }
     }, [message])
 
