@@ -1,7 +1,7 @@
-const field1 = 39;
-const field2 = 36;
-const field3 = 1;
-const field4 = 68;
+const field1 = null;
+const field2 = null;
+const field3 = null;
+const field4 = null;
 
 
 export default{
