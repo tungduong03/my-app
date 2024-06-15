@@ -19,22 +19,26 @@ const labels = [
     {
         code: "field1",
         name: "Temperature",
-        unit: "°C"
+        unit: "°C",
+        chartUrl: "https://thingspeak.com/channels/2552930/charts/1?bgcolor=ffffff&color=%23d62020&dynamic=true&results=100&type=line"
     },
     {
         code: "field2",
-        name: "CO",
-        unit: "PPM"
+        name: "CO₂",
+        unit: "PPM",
+        chartUrl: "https://thingspeak.com/channels/2552930/charts/2?bgcolor=ffffff&color=%23d62020&dynamic=true&results=6000&type=line"
     },
     {
         code: "field3",
         name: "PM2.5",
-        unit: "µg/l"
+        unit: "µg/m³",
+        chartUrl: "https://thingspeak.com/channels/2552930/charts/3?bgcolor=ffffff&color=%23d62020&dynamic=true&results=100&type=line"
     },
     {
         code: "field4",
         name: "Humidity",
-        unit: "%"
+        unit: "%",
+        chartUrl: "https://thingspeak.com/channels/2552930/charts/4?bgcolor=ffffff&color=%23d62020&dynamic=true&results=100&type=line"
     },
 ];
 
@@ -110,71 +114,15 @@ export default function Info({ route, navigation }) {
                                 <Text style={styles.unitText}>
                                     {item.unit}
                                 </Text>
+                                <TouchableHighlight style={styles.unitText} onPress={() => openModal(item.chartUrl)}>
+                                    <Text>↖</Text>
+                                </TouchableHighlight>
                             </View>
                         </View>
                     );
                 })}
             </View>
-            <Button
-                title="Biểu đồ"
-                onPress={() => setShowCharts(!showCharts)} // Toggle chart visibility
-            />
-            {showCharts && (
-                <View style={styles.webviewContainer}>
-                    <View style={styles.row}>
-                        <WebView
-                            style={styles.webview}
-                            source={{ uri: "https://thingspeak.com/channels/2552930/charts/1?bgcolor=ffffff&color=%23d62020&dynamic=true&results=100&type=line" }}
-                            injectedJavaScript={injectedJavaScript}
-                        />
-                        <TouchableHighlight style={styles.zoom} onPress={() => openModal("https://thingspeak.com/channels/2552930/charts/1?bgcolor=ffffff&color=%23d62020&dynamic=true&results=100&type=line")}>
-                            <Text>↖</Text>
-                        </TouchableHighlight>
-                        <WebView
-                            style={styles.webview}
-                            source={{ uri: "https://thingspeak.com/channels/2552930/charts/2?bgcolor=ffffff&color=%23d62020&dynamic=true&results=6000&type=line" }}
-                            injectedJavaScript={injectedJavaScript}
-                        />
-                        <TouchableHighlight style={styles.zoom} onPress={() => openModal("https://thingspeak.com/channels/2552930/charts/2?bgcolor=ffffff&color=%23d62020&dynamic=true&results=6000&type=line")}>
-                            <Text>↖</Text>
-                        </TouchableHighlight>
-                    </View>
-                    <View style={styles.row}>
-                        <WebView
-                            style={styles.webview}
-                            source={{ uri: "https://thingspeak.com/channels/2552930/charts/3?bgcolor=ffffff&color=%23d62020&dynamic=true&results=100&type=line" }}
-                            injectedJavaScript={injectedJavaScript}
-                        />
-                        <TouchableHighlight style={styles.zoom} onPress={() => openModal("https://thingspeak.com/channels/2552930/charts/3?bgcolor=ffffff&color=%23d62020&dynamic=true&results=100&type=line")}>
-                            <Text>↖</Text>
-                        </TouchableHighlight>
-                        <WebView
-                            style={styles.webview}
-                            source={{ uri: "https://thingspeak.com/channels/2552930/charts/4?bgcolor=ffffff&color=%23d62020&dynamic=true&results=100&type=line" }}
-                            injectedJavaScript={injectedJavaScript}
-                        />
-                        <TouchableHighlight style={styles.zoom} onPress={() => openModal("https://thingspeak.com/channels/2552930/charts/4?bgcolor=ffffff&color=%23d62020&dynamic=true&results=100&type=line")}>
-                            <Text>↖</Text>
-                        </TouchableHighlight>
-                    </View>
-                    <Text style={styles.header}>
-                        {" "}
-                        {" "}
-                        {" "}
-                        {" "}
-                        {" "}
-                        {" "}
-                    </Text>
-                    <Text style={styles.header}>
-                        {" "}
-                        {" "}
-                        {" "}
-                        {" "}
-                        {" "}
-                        {" "}
-                    </Text>
-                </View>
-            )}
+            
             <Modal
                 animationType="slide"
                 transparent={false}
